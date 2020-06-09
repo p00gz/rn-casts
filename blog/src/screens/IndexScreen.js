@@ -5,7 +5,7 @@ import {
   StyleSheet,
   FlatList,
   Button,
-  TouchableOpacity
+  TouchableOpacity,
 } from 'react-native';
 import { Context } from '../context/BlogContext';
 import { Feather } from '@expo/vector-icons';
@@ -18,7 +18,7 @@ const IndexScreen = ({ navigation }) => {
       <Button title="Add Post" onPress={addBlogPost} />
       <FlatList
         data={state}
-        keyExtractor={blogPost => blogPost.title}
+        keyExtractor={(blogPost) => blogPost.title}
         renderItem={({ item }) => {
           return (
             <TouchableOpacity
@@ -42,11 +42,11 @@ const IndexScreen = ({ navigation }) => {
 
 IndexScreen.navigationOptions = ({ navigation }) => {
   return {
-    headerRight: (
+    headerRight: () => (
       <TouchableOpacity onPress={() => navigation.navigate('Create')}>
         <Feather name="plus" size={30} />
       </TouchableOpacity>
-    )
+    ),
   };
 };
 
@@ -57,14 +57,14 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     paddingHorizontal: 10,
     borderTopWidth: 1,
-    borderColor: 'gray'
+    borderColor: 'gray',
   },
   title: {
-    fontSize: 18
+    fontSize: 18,
   },
   icon: {
-    fontSize: 24
-  }
+    fontSize: 24,
+  },
 });
 
 export default IndexScreen;
