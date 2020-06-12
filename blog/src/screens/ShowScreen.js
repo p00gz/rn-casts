@@ -7,7 +7,7 @@ const ShowScreen = ({ navigation }) => {
   const { state } = useContext(Context);
 
   const blogPost = state.find(
-    blogPost => blogPost.id === navigation.getParam('id')
+    (blogPost) => blogPost.id === navigation.getParam('id')
   );
 
   return (
@@ -20,7 +20,7 @@ const ShowScreen = ({ navigation }) => {
 
 ShowScreen.navigationOptions = ({ navigation }) => {
   return {
-    headerRight: (
+    headerRight: () => (
       <TouchableOpacity
         onPress={() =>
           navigation.navigate('Edit', { id: navigation.getParam('id') })
@@ -28,7 +28,7 @@ ShowScreen.navigationOptions = ({ navigation }) => {
       >
         <EvilIcons name="pencil" size={35} />
       </TouchableOpacity>
-    )
+    ),
   };
 };
 
