@@ -39,7 +39,7 @@ const SignupScreen = ({ navigation }) => {
 
 SignupScreen.navigationOptions = () => {
   return {
-    header: null
+    header: () => false,
   };
 };
 
@@ -47,8 +47,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    marginBottom: 250
-  }
+    marginBottom: 250,
+  },
 });
 
 export default SignupScreen;
