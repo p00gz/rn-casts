@@ -16,7 +16,7 @@ const SignupScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <NavigationEvents onWillBlur={clearErrorMessage} />
+      <NavigationEvents onWillFocus={clearErrorMessage} />
       <AuthForm
         headerText="Sign Up for Tracker"
         errorMessage={state.errorMessage}
@@ -33,7 +33,7 @@ const SignupScreen = ({ navigation }) => {
 
 SignupScreen.navigationOptions = () => {
   return {
-    header: null
+    header: () => false,
   };
 };
 
@@ -41,8 +41,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    marginBottom: 250
-  }
+    marginBottom: 250,
+  },
 });
 
 export default SignupScreen;
