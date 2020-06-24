@@ -3,24 +3,24 @@ import { AsyncStorage } from 'react-native';
 
 let url;
 if (__DEV__) {
-  url = 'http://cd14184c.ngrok.io';
+  url = 'http://5fa02756d31c.ngrok.io';
 } else {
-  url = 'https://sleepy-savannah-10606.herokuapp.com';
+  url = '';
 }
 
 const instance = axios.create({
-  baseURL: url
+  baseURL: url,
 });
 
 instance.interceptors.request.use(
-  async config => {
+  async (config) => {
     const token = await AsyncStorage.getItem('token');
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
   },
-  err => {
+  (err) => {
     return Promise.reject(err);
   }
 );
